@@ -3,10 +3,11 @@ require('dotenv').config()
 const config = require('./config.json')
 const i18n = require('i18n')
 const fs = require('fs')
+const { Collection } = require('@discordjs/collection')
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds]})
 
-client.commands = new Collection() 
+client.commands = new Collection()
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'))
 
 for (const file of commandFiles) {
